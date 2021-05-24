@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using SpecFlowPaint.Domain.Windows;
 using System.Resources;
 using TechTalk.SpecFlow;
 
@@ -20,9 +19,16 @@ namespace SpecFlowPaint.Steps
         [When(@"I click View")]
         public void WhenIClickView()
         {
-            window.ClickFile();
+            //window.ClickFile();
             window.ClickOpen();
         }
+
+        [When(@"I click Select")]
+        public void WhenIClickSelect()
+        {
+            window.findRotate();
+        }
+
 
     }
 }
