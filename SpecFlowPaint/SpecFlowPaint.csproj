@@ -48,12 +48,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ConfData.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\TestData.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestData.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Update="Resources\ConfData.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ConfData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\TestData.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>TestData.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

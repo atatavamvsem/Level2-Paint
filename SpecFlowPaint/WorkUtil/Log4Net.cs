@@ -11,7 +11,7 @@ using log4net;
 
 namespace SpecFlowPaint
 {
-    class Log4Net
+    public class Log4Net
     {
         private static ILog instance;
 

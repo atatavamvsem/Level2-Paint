@@ -22,14 +22,14 @@ namespace SpecFlowPaint.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ConfData {
+    internal class TestData {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ConfData() {
+        internal TestData() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace SpecFlowPaint.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpecFlowPaint.Resources.ConfData", typeof(ConfData).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SpecFlowPaint.Resources.TestData", typeof(TestData).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,29 @@ namespace SpecFlowPaint.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to mspaint.exe.
+        ///   Looks up a localized string similar to 5.
         /// </summary>
-        internal static string AppName {
+        internal static string DeltaMove {
             get {
-                return ResourceManager.GetString("AppName", resourceCulture);
+                return ResourceManager.GetString("DeltaMove", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to mspaint.
+        ///   Looks up a localized string similar to Open.
         /// </summary>
-        internal static string ProcessName {
+        internal static string OpenDialogName {
             get {
-                return ResourceManager.GetString("ProcessName", resourceCulture);
+                return ResourceManager.GetString("OpenDialogName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to C:\a.jpg.
+        /// </summary>
+        internal static string PathToFile {
+            get {
+                return ResourceManager.GetString("PathToFile", resourceCulture);
             }
         }
         

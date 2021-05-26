@@ -11,11 +11,5 @@ namespace SpecFlowPaint.Hooks
             AppManager.CloseAllInstants();
             AppManager.GetApplication();
         }
-
-        [AfterScenario]
-        public static void AfterScenario()
-        {
-            //AppManager.Close();
-        }
     }
 }

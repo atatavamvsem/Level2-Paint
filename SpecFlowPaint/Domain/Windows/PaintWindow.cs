@@ -1,47 +1,56 @@
-﻿using SpecFlowPaint.Resources;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using TestStack.White.InputDevices;
+using TestStack.White.UIItems;
+using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
 
 namespace SpecFlowPaint
 {
-    public class PaintWindow
+    internal class PaintWindow : BaseWindow
     {
-        private Button AddButton => new Button("File tab", "AddButton");
-        private Button Rotate => new Button("Resize", "AddButton");
-        //private Button[] Select => BaseElement.GetElementByTextGroup();
+        private static readonly ResourceManager TestData = Resources.TestData.ResourceManager;
+        private static readonly Window Window = AppManager.GetWindowByClassName(TestData.GetString("WindowName"));
+        private Button ResizeButton => new Button("Resize", "Resize Button");
+        private Button SelectAllButton => new Button("Select all", "Select All Button");
+        private Button CutButton => new Button("Cut", "Cut Button");
+        private Button СloseButton => new Button("Close", "Сlose Button");
+        private Button DontSaveButton => new Button("Don't Save", "Dont Save Button");
 
-        private static readonly ResourceManager ConfData = Resources.ConfData.ResourceManager;
-        private static Window Window ;
-
-        internal void ClickFile()
+        internal void ClickCut()
         {
-            AddButton.Click();
+            CutButton.Click(Window);
         }
 
-        internal void ClickOpen()
+        internal void ClickClose()
         {
-            Window = AppManager.GetWindow(ConfData.GetString("WindowName"));
-            Keyboard.Instance.HoldKey(TestStack.White.WindowsAPI.KeyboardInput.SpecialKeys.CONTROL);
-            Keyboard.Instance.Enter("O");
-            Keyboard.Instance.LeaveKey(TestStack.White.WindowsAPI.KeyboardInput.SpecialKeys.CONTROL);
-            Window = AppManager.GetWindow("Open");
-            Window.Enter(@"C:\a.jpg");
-            Keyboard.Instance.PressSpecialKey(TestStack.White.WindowsAPI.KeyboardInput.SpecialKeys.RETURN);
-            Window = AppManager.GetWindow(ConfData.GetString("WindowName"));
-            //BaseElement.GetElementByTextGroup();
-            //AddButton.Click();
+            СloseButton.Click(Window);
         }
 
-        internal void findRotate()
+        internal void ClickDontSave()
         {
-            Rotate.GetElementByText();
-            Rotate.MoveOn();
+            DontSaveButton.Click(Window);
+        }
+
+        internal void OpenDialog()
+        {
+            OpenPicture(Window);
+        }
+
+        internal void ClickSelectAll()
+        {
+            ClickSelectExtended();
+            SelectAllButton.Click(Window);
+            SelectAllButton.Click(Window);
+        }
+
+        internal void ClickSelectExtended()
+        {
+            ResizeButton.GetElementByText(Window);
+            MoveMouse(ResizeButton.GetLeftBounds(Window) - Convert.ToDouble(TestData.GetString("DeltaMove")), ResizeButton.GetBottomBounds(Window), Window);
+            ClickMouse(Window);
         }
     }
 }

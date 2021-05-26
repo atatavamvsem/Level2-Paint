@@ -117,11 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AppName" xml:space="preserve">
-    <value>mspaint.exe</value>
+  <data name="DeltaMove" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="ProcessName" xml:space="preserve">
-    <value>mspaint</value>
+  <data name="OpenDialogName" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="PathToFile" xml:space="preserve">
+    <value>C:\a.jpg</value>
   </data>
   <data name="SaveDialogName" xml:space="preserve">
     <value>Paint</value>

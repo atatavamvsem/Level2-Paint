@@ -1,4 +1,5 @@
 ﻿using log4net;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -48,11 +49,40 @@ namespace SpecFlowPaint
             }
         }
 
-        public static Window GetWindow(string windowName)
+        public static Window GetWindowByClassName(string windowName)
         {
-            SearchCriteria sc = SearchCriteria.ByClassName("MSPaintApp");
-            Window app = application.GetWindow(sc, InitializeOption.NoCache);
-            return app;
+            return GetWindow(SearchCriteria.ByClassName(windowName));
+        }
+
+        internal static bool ModalWindowIsPresent(string mainWindowName, string dialogWindowName)
+        {
+            Window mainWindow = GetWindowByClassName(mainWindowName);
+            List<Window> app = mainWindow.ModalWindows();
+            foreach (Window win in app)
+            {
+                if (win.Title.Equals(dialogWindowName)) return true;
+            }
+            return false;
+        }
+
+        public static Window GetWindow(SearchCriteria sc)
+        {
+            return application.GetWindow(sc, InitializeOption.NoCache);
+        }
+
+        public static Window GetWindow(string sc)
+        {
+            return application.GetWindow(sc, InitializeOption.NoCache);
+        }
+
+        public static string GetAppName()
+        {
+            return application.Name;
+        }
+
+        public static Window GetModalWindow(string mainWindowName,string windowName)
+        {
+            return GetWindowByClassName(mainWindowName).ModalWindow(windowName);
         }
 
         public static void Close()
@@ -60,18 +90,17 @@ namespace SpecFlowPaint
             try
             {
                 application.Kill();
-                logger.Info("Calculator is closed");
+                logger.Info("Paint is closed");
             }
             catch
             {
-                logger.Error("Calculator hasn't closed");
+                logger.Error("Paint hasn't closed");
             }
         }
 
         public static string GetWindowName(string windowName)
         {
-            Window b = GetWindow(windowName);
-            return b.ToString();
+            return GetWindow(windowName).ToString();
         }
     }
 }
